@@ -9,7 +9,7 @@ apply plugin: 'kotlin-parcelize'
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
-apikeyProperties.load( new FileInputStream(apikeyPropertiesFile))
+apikeyProperties.load( new FileInputStream(apikeyPropertiesFile).newDataInputStream())
 
 android {
     namespace 'com.thierryboiago.walpaperapp'
