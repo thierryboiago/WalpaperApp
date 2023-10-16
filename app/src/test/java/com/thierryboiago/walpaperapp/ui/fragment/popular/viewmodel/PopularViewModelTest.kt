@@ -42,7 +42,7 @@ class PopularViewModelTest{
     }
 
     @Test
-    fun `Should validate pagination data`() = runTest {
+    fun `Should validate paginati on data`() = runTest {
         //Arrange
         whenever(popularUseCase(any())).thenReturn(flowOf(getPagingDataMock))
 
