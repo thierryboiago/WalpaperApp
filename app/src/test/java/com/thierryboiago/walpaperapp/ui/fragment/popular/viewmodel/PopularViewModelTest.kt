@@ -54,7 +54,7 @@ class PopularViewModelTest{
     }
 
     @Test(expected = RuntimeException::class)
-    fun `Should return an empty PagingData When an error occurred`() = runTest{
+    fun `Should return an empty  PagingData When an error occurred`() = runTest{
         whenever(popularUseCase(any())).thenThrow(RuntimeException())
 
         popularViewModel.popularWallpaper()
