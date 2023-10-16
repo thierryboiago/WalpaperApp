@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "537578302497",
+    "project_id": "wallpaperapp-71253",
+    "storage_bucket": "wallpaperapp-71253.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537578302497:android:83816a27053474b9f4c760",
+        "android_client_info": {
+          "package_name": "com.thierryboiago.walpaperapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcvtdN0pCUpn3nboeq_FFoWqJY7hhtPec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537578302497:android:31329706b0bc1144f4c760",
+        "android_client_info": {
+          "package_name": "com.thierryboiago.walpaperapp.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcvtdN0pCUpn3nboeq_FFoWqJY7hhtPec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537578302497:android:c4336b7c4ae3d5d5f4c760",
+        "android_client_info": {
+          "package_name": "com.thierryboiago.walpaperapp.staging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcvtdN0pCUpn3nboeq_FFoWqJY7hhtPec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
