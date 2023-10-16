@@ -3,6 +3,7 @@ package com.thierryboiago.walpaperapp.ui.fragment.popular.viewmodel
 import androidx.paging.PagingData
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
+import com.thierryboiago.core.usecase.insertusecase.InsertPhotoUseCase
 import com.thierryboiago.core.usecase.popularusecase.GetPopularUseCase
 import com.thierryboiago.testing.coroutinerule.MainCoroutineRule
 import com.thierryboiago.testing.model.WallpaperFactory
@@ -28,17 +29,20 @@ class PopularViewModelTest{
     @Mock
     lateinit var popularUseCase: GetPopularUseCase
 
+    @Mock
+    lateinit var insertPhotoUseCase: InsertPhotoUseCase
+
     lateinit var popularViewModel: PopularViewModel
 
     private val wallpaperFactory = WallpaperFactory()
 
     @Before
     fun setup(){
-        popularViewModel = PopularViewModel(popularUseCase)
+        popularViewModel = PopularViewModel(popularUseCase, insertPhotoUseCase)
     }
 
     @Test
-    fun `Should validate pagination data`() = runTest {
+    fun `Should val idate pagi  nati    on data`() = runTest {
         //Arrange
         whenever(popularUseCase(any())).thenReturn(flowOf(getPagingDataMock))
 
