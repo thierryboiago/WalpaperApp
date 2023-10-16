@@ -44,7 +44,7 @@ class DownloadFragment : Fragment() {
 
     private fun buttonSheet(){
         val bottomSheet = BottomSheetDownload(args.image[0], args.image[1])
-        binding.downloadImage.setOnClickListener{
+        binding.downloadButton.setOnClickListener{
             bottomSheet.show(requireActivity().supportFragmentManager, "BottomSheet")
         }
     }

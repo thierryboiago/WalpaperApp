@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.thierryboiago.walpaperapp.R
 import com.thierryboiago.walpaperapp.databinding.FragmentMainBinding
@@ -62,7 +63,7 @@ class MainFragment : Fragment() {
 
     private fun detail(){
         binding.fab.setOnClickListener{
-
+            findNavController().navigate(R.id.action_mainFragment_to_galleryFragment)
         }
     }
 
@@ -73,4 +74,6 @@ class MainFragment : Fragment() {
             setLayout()
         }
     }
+
+     
 }
