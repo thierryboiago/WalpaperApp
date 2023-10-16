@@ -9,7 +9,8 @@ import com.thierryboiago.walpaperapp.extensions.loadBlurredImageWithPlaceholder
 
 class PhotoViewHolder(
     itemBiding: ItemPhotoBinding,
-    private val clickCallBack: (PhotoDomain) ->Unit
+    private val clickCallBack: (PhotoDomain) -> Unit,
+    private val longClickCallBack: (PhotoDomain) -> Unit
 ): RecyclerView.ViewHolder(itemBiding.root) {
 
     private val image = itemBiding.image
@@ -25,13 +26,21 @@ class PhotoViewHolder(
         itemView.setOnClickListener{
             clickCallBack.invoke(photo)
         }
+        itemView.setOnLongClickListener{
+            longClickCallBack.invoke(photo)
+            return@setOnLongClickListener true
+        }
     }
 
     companion object {
-        fun create(parent: ViewGroup, photoCallBack: (PhotoDomain) ->Unit): PhotoViewHolder{
+        fun create(
+            parent: ViewGroup,
+            photoCallBack: (PhotoDomain) -> Unit,
+            longClickCallBack: ((PhotoDomain) -> Unit)
+        ): PhotoViewHolder{
             val inflater = LayoutInflater.from(parent.context)
             val itemBinding = ItemPhotoBinding.inflate(inflater, parent, false)
-            return PhotoViewHolder(itemBinding, photoCallBack)
+            return PhotoViewHolder(itemBinding, photoCallBack, longClickCallBack)
         }
     }
 }

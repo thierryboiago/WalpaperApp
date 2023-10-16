@@ -7,10 +7,11 @@ import com.thierryboiago.core.domain.model.PhotoDomain
 import com.thierryboiago.walpaperapp.ui.fragment.adapter.viewholder.PhotoViewHolder
 
 class PhotoAdapter(
-    private  val clickCallBack: ((PhotoDomain) -> Unit)
+    private  val clickCallBack: ((PhotoDomain) -> Unit),
+    private val longClickCallBack: ((PhotoDomain) -> Unit)
 ):PagingDataAdapter<PhotoDomain, PhotoViewHolder>(differCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
-        return PhotoViewHolder.create(parent, clickCallBack)
+        return PhotoViewHolder.create(parent, clickCallBack, longClickCallBack)
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {

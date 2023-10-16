@@ -13,15 +13,19 @@ import javax.inject.Inject
 
 
 interface InsertPhotoUseCase{
-    suspend operator fun invoke(params: Unit = Unit): ResultStatus<Unit>
+     operator fun invoke(params: Params): Flow<ResultStatus<Unit>>
+     data class Params(
+         val photoDomain: PhotoDomain
+     )
 }
 class InsertPhotoUseCaseImpl @Inject constructor(
     private val repository: GalleryRepository,
     private val dispatcher: CoroutinesDispatchers
 
-): UseCase<Unit, Unit>(), InsertPhotoUseCase {
-    override suspend fun doWork(params: Unit): ResultStatus<Unit> {
-        TODO("Not yet implemented")
+): UseCase<InsertPhotoUseCase.Params, Unit>(), InsertPhotoUseCase {
+    override suspend fun doWork(params: InsertPhotoUseCase.Params): ResultStatus<Unit> = withContext(dispatcher.io()){
+        repository.insert(photoDomain = params.photoDomain)
+        ResultStatus.Success(Unit)
     }
 
 

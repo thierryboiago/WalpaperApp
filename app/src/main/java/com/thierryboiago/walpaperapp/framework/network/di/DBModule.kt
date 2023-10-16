@@ -21,6 +21,7 @@ class DBModule {
             DbConstants.APP_DATA_BASE_NAME
         ).build()
 
+    @Provides
     fun provideWallpaperDao(database: WallpaperAppDatabase) = database.wallpaperDao()
 
 

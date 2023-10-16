@@ -15,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_SLIDE
+import com.google.android.material.snackbar.Snackbar
 import com.thierryboiago.core.domain.model.PhotoDomain
 import com.thierryboiago.walpaperapp.databinding.FragmentPopularBinding
 import com.thierryboiago.walpaperapp.ui.fragment.adapter.photoadapter.PhotoAdapter
@@ -44,6 +46,7 @@ class PopularFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
         observeLoadState()
+        observerFavoriteUiState()
         lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.popularWallpaper().collect { pagingData ->
@@ -72,7 +75,7 @@ class PopularFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        photoAdapter = PhotoAdapter(::detail)
+        photoAdapter = PhotoAdapter(::detail, ::insertPhoto)
         val gridLayoutManager = GridLayoutManager(context, 3)
         with(binding.recyclerView) {
             scrollToPosition(0)
@@ -87,5 +90,26 @@ class PopularFragment : Fragment() {
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(data))
     }
 
+    private fun insertPhoto(photo: PhotoDomain){
+        viewModel.favoritePhoto(photo)
+    }
+
+
+    private fun observerFavoriteUiState() {
+        viewModel.favoriteUiState.observe(viewLifecycleOwner) { favoriteUiState ->
+            when (favoriteUiState) {
+                PopularViewModel.FavoriteUiState.Loading -> 1
+                is PopularViewModel.FavoriteUiState.FavoriteIcon -> { favoriteUiState.icon }
+                is PopularViewModel.FavoriteUiState.FavoritePhoto -> {
+                    if (favoriteUiState.saved) favoriteItemMessage("item salvo")
+                    else favoriteItemMessage("erro ao salvar")
+                }
+            }
+        }
+    }
+
+    private fun favoriteItemMessage(message: String){
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).setAnimationMode(ANIMATION_MODE_SLIDE).show()
+    }
 
 }
