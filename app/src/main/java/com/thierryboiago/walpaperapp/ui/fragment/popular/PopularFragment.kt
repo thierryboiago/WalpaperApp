@@ -11,12 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.thierryboiago.core.domain.model.PhotoDomain
 import com.thierryboiago.walpaperapp.databinding.FragmentPopularBinding
 import com.thierryboiago.walpaperapp.ui.fragment.adapter.photoadapter.PhotoAdapter
+import com.thierryboiago.walpaperapp.ui.fragment.main.MainFragmentDirections
 import com.thierryboiago.walpaperapp.ui.fragment.popular.viewmodel.PopularViewModel
 import com.thierryboiago.walpaperapp.util.animationCancel
 import com.thierryboiago.walpaperapp.util.pulseAnimation
@@ -81,7 +83,8 @@ class PopularFragment : Fragment() {
     }
 
     private fun detail(photo: PhotoDomain) {
-        Toast.makeText(requireContext(), "Item clicked!", Toast.LENGTH_SHORT)
+        val data = arrayOf(photo.srcDomain?.original, photo.avgColor)
+        findNavController().navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(data))
     }
 
 

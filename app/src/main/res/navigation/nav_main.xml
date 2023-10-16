@@ -9,5 +9,19 @@
         android:id="@+id/mainFragment"
         android:name="com.thierryboiago.walpaperapp.ui.fragment.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_downloadFragment"
+            app:destination="@id/downloadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/downloadFragment"
+        android:name="com.thierryboiago.walpaperapp.ui.fragment.download.DownloadFragment"
+        android:label="fragment_downlaod"
+        tools:layout="@layout/fragment_downlaod"
+        >
+        <argument
+            android:name="image"
+            app:argType="string[]" />
+    </fragment>
 </navigation>
