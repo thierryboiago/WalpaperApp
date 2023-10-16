@@ -42,7 +42,7 @@ class PopularViewModelTest{
     }
 
     @Test
-    fun `Should validate pagi  nati    on data`() = runTest {
+    fun `Should val idate pagi  nati    on data`() = runTest {
         //Arrange
         whenever(popularUseCase(any())).thenReturn(flowOf(getPagingDataMock))
 
