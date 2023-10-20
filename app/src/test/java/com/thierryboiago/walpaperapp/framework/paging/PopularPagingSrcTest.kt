@@ -41,7 +41,7 @@ class PopularPagingSrcTest{
     }
 
     @Test
-    fun `should return a success load result when load is called`() = runTest{
+    fun `should return a success load result wsdhen load is called`() = runTest{
         whenever(remoteDataSource.fetchPopular(any(), any())).thenReturn(dataWrapperResponseFactory.create())
 
         val result = pagingSrc.load(
